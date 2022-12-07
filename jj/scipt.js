@@ -9,12 +9,27 @@ const personalMovieDB = {
     privat: false
 };
 
-const a = prompt('One of the last movies you watched?', ''),
-    b = +prompt('Scale it', ''),
-    c = prompt('One of the last movies you watched?', ''),
-    d = +prompt('Scale it', '');
+for (let i = 0; i < 2; i++) {
+    const a = prompt('One of the last movies you watched?', ''),
+    b = +prompt('Scale it', '');
 
-personalMovieDB.movies[a] = b;
-personalMovieDB.movies[c] = d;
+    if (a != null && b != null && a!= '' && b != '' && a.length < 50) {
+        personalMovieDB.movies[a] = b;
+        console.log('done!');
+    } else {
+        i--;
+        console.log('error!');
+    }
+}
+
+if (personalMovieDB.count < 10) {
+    console.log ('You watched very few movies :(');
+} else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+    console.log('You are classic viewer');
+} else if (personalMovieDB.count >= 30) {
+    console.log('YOU ARE MOVIE MANIAC');
+} else {
+    console.log('Something happend wrong!');
+}
 
 console.log(personalMovieDB);
